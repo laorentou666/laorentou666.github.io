@@ -1963,6 +1963,9 @@ pre code {
   flex-basis: 100%;
   height: 0;
 }
+#busuanzi_container_page_pv {
+  display: none;
+}
 .post-nav {
   border-top: 1px solid #eee;
   display: flex;
@@ -2582,7 +2585,7 @@ header.header {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #59031f;
+  background: #afff03;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
