@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lrt666.top","root":"/","images":"/images","scheme":"Pisces","darkmode":"auto","version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用Alist搭建的个人网盘，效果如下：  底部添加了看板娘，支持添加站点公告  支持调用Potplayer等第三方播放器，支持加载视频自带字幕  支持调用Aria2离线下载，支持挂载各大网盘，那么如何搭建？这个视频从零开始告诉你！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用软路由结合Alist搭建个人网盘">
+<meta property="og:url" content="https://lrt666.top/posts/73874834.html">
+<meta property="og:site_name" content="Laorentou#1337&#39;s Blog">
+<meta property="og:description" content="使用Alist搭建的个人网盘，效果如下：  底部添加了看板娘，支持添加站点公告  支持调用Potplayer等第三方播放器，支持加载视频自带字幕  支持调用Aria2离线下载，支持挂载各大网盘，那么如何搭建？这个视频从零开始告诉你！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/06/21/h96aHEr54UZCm7n.png">
+<meta property="og:image" content="https://s2.loli.net/2023/07/07/HjbmK8FMQTEPhy7.png">
+<meta property="og:image" content="https://s2.loli.net/2023/07/07/jXazCAUgKi3q4rH.png">
+<meta property="og:image" content="https://s2.loli.net/2023/07/07/imcWnDfKHTV5oXF.png">
+<meta property="og:image" content="https://s2.loli.net/2023/07/07/7Zfu3VPTF1sIlhE.png">
+<meta property="og:image" content="https://s2.loli.net/2023/07/07/nmCZ6gBrwqN93V8.png">
+<meta property="og:image" content="https://s2.loli.net/2023/07/07/wluJ2Tyi6QCGo1D.png">
+<meta property="article:published_time" content="2023-08-10T02:46:49.704Z">
+<meta property="article:modified_time" content="2023-08-10T03:15:43.801Z">
+<meta property="article:author" content="Laorentou#1337">
+<meta property="article:tag" content="老人头,laorentou,laorentou666">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/06/21/h96aHEr54UZCm7n.png">
+
+
+<link rel="canonical" href="https://lrt666.top/posts/73874834.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lrt666.top/posts/73874834.html","path":"posts/73874834.html","title":"使用软路由结合Alist搭建个人网盘"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用软路由结合Alist搭建个人网盘 | Laorentou#1337's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Laorentou#1337's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Welcome!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E9%80%89%E6%8B%A9"><span class="nav-number">1.</span> <span class="nav-text">设备选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%9B%BA%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">下载固件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B7%E5%85%A5%E5%9B%BA%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">刷入固件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%BD%AF%E8%B7%AF%E7%94%B1%E5%8F%8AAlist"><span class="nav-number">4.</span> <span class="nav-text">配置软路由及Alist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%B0%86Alist%E6%8C%82%E8%BD%BD%E8%87%B3%E5%85%AC%E7%BD%91"><span class="nav-number">5.</span> <span class="nav-text">使用端口映射将Alist挂载至公网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%97%E7%94%A8cloudflareCDN"><span class="nav-number">6.</span> <span class="nav-text">套用cloudflareCDN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%8E%E5%8C%96"><span class="nav-number">7.</span> <span class="nav-text">美化</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Laorentou#1337</p>
+  <div class="site-description" itemprop="description">老人头的兴趣使然的Blog，随便写点东西，欢迎各位大佬们的访问</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+<p id="hitokoto">
+  <a href="#" id="hitokoto_text">:D 获取中...</a>
+</p>
+<script>
+  fetch('https://v1.hitokoto.cn?c=a&c=i&c=j&encode=json&charset=utf-8')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.querySelector('#hitokoto_text');
+      hitokoto.href = `https://hitokoto.cn?uuid=${data.uuid}`;
+      hitokoto.innerText = `${data.hitokoto}  --${data.from_who}《${data.from}》`;
+    })
+    .catch(console.error);
+</script>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lrt666.top/posts/73874834.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Laorentou#1337">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Laorentou#1337's Blog">
+      <meta itemprop="description" content="老人头的兴趣使然的Blog，随便写点东西，欢迎各位大佬们的访问">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用软路由结合Alist搭建个人网盘 | Laorentou#1337's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用软路由结合Alist搭建个人网盘
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-08-10 10:46:49 / 修改时间：11:15:43" itemprop="dateCreated datePublished" datetime="2023-08-10T10:46:49+08:00">2023-08-10</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>674</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>使用Alist搭建的个人网盘，效果如下：</p>
+<ul>
+<li><p>底部添加了看板娘，支持添加站点公告</p>
+</li>
+<li><p>支持调用Potplayer等第三方播放器，支持加载视频自带字幕</p>
+</li>
+<li><p>支持调用Aria2离线下载，支持挂载各大网盘，那么如何搭建？这个视频从零开始告诉你！</p>
+</li>
+</ul>
+<span id="more"></span>
+
+<p><img src="https://s2.loli.net/2023/06/21/h96aHEr54UZCm7n.png" alt="QQ截图20230621211119"></p>
+<h2 id="设备选择"><a href="#设备选择" class="headerlink" title="设备选择"></a>设备选择</h2><p>你可以购买软路由或者Linux服务器，笔者使用的是R2s，体积小巧，价格也很美丽，适合新手使用，Linux服务器的操作大同小异，本视频使用软路由搭建。</p>
+<h2 id="下载固件"><a href="#下载固件" class="headerlink" title="下载固件"></a>下载固件</h2><p>笔者目前正在使用的是<a target="_blank" rel="noopener" href="https://github.com/DHDAXCW/NanoPi-R2S-rk3328">骷髅头的固件</a>，插件多，支持Docker，稳定性好。</p>
+<p>（<em>由于后期要进行端口映射，所以推荐下载带docker的版本，一行命令解决</em>）</p>
+<h2 id="刷入固件"><a href="#刷入固件" class="headerlink" title="刷入固件"></a>刷入固件</h2><p>刷入固件推荐使用Rufus，来到主页，选择下载好的固件及TF卡，点击开始稍等片刻即可。</p>
+<h2 id="配置软路由及Alist"><a href="#配置软路由及Alist" class="headerlink" title="配置软路由及Alist"></a>配置软路由及Alist</h2><p>在浏览器输入192.168.11.1进入软路由后台，默认密码password，建议在Web管理中修改管理员密码。</p>
+<p>来到网络存储-Alist文件管理，点击启用后点击“允许从外网访问”，保存应用。</p>
+<p>本文以阿里云盘为例来添加网盘。</p>
+<p>进入</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://alist.nn.ci/tool/aliyundrive/request.html">https://alist.nn.ci/tool/aliyundrive/request.html</a></p>
+</blockquote>
+<p>登录你的阿里云盘账号后点击允许，然后就能获得你的刷新令牌。（保存好待会要用）</p>
+<p><img src="https://s2.loli.net/2023/07/07/HjbmK8FMQTEPhy7.png" alt="image-20230707163811285"></p>
+<p><img src="https://s2.loli.net/2023/07/07/jXazCAUgKi3q4rH.png" alt="image-20230707171847209"></p>
+<p>来到Alist管理页，点击存储，添加，驱动选择阿里云盘Open，挂载路径可以随意，刷新令牌填写刚才获取到的，移除方式随意，添加即可。</p>
+<p><img src="https://s2.loli.net/2023/07/07/imcWnDfKHTV5oXF.png" alt="image-20230707171706540"></p>
+<h2 id="使用端口映射将Alist挂载至公网"><a href="#使用端口映射将Alist挂载至公网" class="headerlink" title="使用端口映射将Alist挂载至公网"></a>使用端口映射将Alist挂载至公网</h2><p>端口映射推荐使用<a target="_blank" rel="noopener" href="https://openfrp.net/">OpenFrp</a>，免费流量多，注册账号不多赘述，来到创建隧道页，类型选择HTTPS，本地地址填写192.168.11.1，本地端口填写5244，绑定域名填写你的个人域名，远程端口可随意。</p>
+<p><img src="https://s2.loli.net/2023/07/07/7Zfu3VPTF1sIlhE.png" alt="image-20230707172209952"></p>
+<p>在OpenFrp的软件下载页使用docker run命令运行。</p>
+<p><code>docker run -d --name of openfrp/frpc:latest -u &lt;访问密钥&gt; -p &lt;隧道ID&gt;</code></p>
+<p>建议将重启策略改为always以保持后台运行。</p>
+<h2 id="套用cloudflareCDN"><a href="#套用cloudflareCDN" class="headerlink" title="套用cloudflareCDN"></a>套用cloudflareCDN</h2><p>来到OpenFrp的配置文件页，选择你的节点，复制server_addr后的地址。</p>
+<p><img src="https://s2.loli.net/2023/07/07/nmCZ6gBrwqN93V8.png" alt="image-20230707172329499"></p>
+<p>在Cloudflare后台内添加CNAME解析。（图是以前截的，就那意思罢）</p>
+<p><img src="https://s2.loli.net/2023/07/07/wluJ2Tyi6QCGo1D.png" alt="image-20230707172718026"></p>
+<p>稍等片刻后即可通过个人域名访问网站。</p>
+<p>至此，你的个人网盘已经搭建完成，Enjoy！</p>
+<h2 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h2><p>看板娘：</p>
+<p>在Alist后台→设置→全局→自定义内容填写</p>
+<p><code>&lt;script src=&quot;https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js&quot;&gt;&lt;/script&gt;</code></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/5246fadb.html" rel="prev" title="浅谈OpenClash与ADGuard Home的组合">
+                  <i class="fa fa-angle-left"></i> 浅谈OpenClash与ADGuard Home的组合
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/4226729727.html" rel="next" title="一段灿烂的回忆，一个冬日的故事——《水仙Narcissu》杂谈">
+                  一段灿烂的回忆，一个冬日的故事——《水仙Narcissu》杂谈 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Laorentou#1337</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">3k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">12 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div><div>
+<!--添加网站运行时间-->
+<span>小破站已经在风雨中度过了</span>
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    function createtime() {
+        const startTime = '06/03/2023 00:00:00',
+            start = new Date(startTime)
+        let mill = new Date() - start,
+            seconds = Math.floor(mill / 1000),
+            mins = Math.floor(seconds / 60),
+            hours = Math.floor(mins / 60),
+            days = Math.floor(hours / 24)
+        const time = {
+            seconds: seconds - mins * 60,
+            mins: mins - hours * 60,
+            hours: hours - days * 24,
+        }
+        for (const k in time) {
+            time[k] = `${time[k]}`.padStart(2, '0')
+        }
+        document.getElementById("timeDate").innerHTML = ` ${days} 天`
+        document.getElementById("times").innerHTML = ` ${time.hours} 小时 ${time.mins} 分 ${time.seconds} 秒`
+    }
+    setInterval(createtime, 500)
+</script>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
