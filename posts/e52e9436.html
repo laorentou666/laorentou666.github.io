@@ -20,36 +20,39 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"lrt666.top","root":"/","images":"/images","scheme":"Pisces","darkmode":"auto","version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="OpenClash无疑是在Openwrt上我用过的最好的插件之一，其切换节点的速度与流媒体的分流都是其他插件无法比拟的。那么其搭配上用来过滤广告加速网站解析的ADGuard Home会怎么样呢？但由于OpenClash门槛较高，小白不易上手，以下简述设置流程。">
+    <meta name="description" content="IPv6已普及多年，可看着我的“IPv4访问优先”，我不禁陷入了沉思，我觉得是时候该折腾折腾了。本文将从零开始教你如何开启IPv6。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈OpenClash与ADGuard Home的组合">
-<meta property="og:url" content="https://lrt666.top/posts/5246fadb.html">
+<meta property="og:title" content="个人折腾移动光猫开启IPv6教程">
+<meta property="og:url" content="https://lrt666.top/posts/e52e9436.html">
 <meta property="og:site_name" content="Laorentou#1337&#39;s Blog">
-<meta property="og:description" content="OpenClash无疑是在Openwrt上我用过的最好的插件之一，其切换节点的速度与流媒体的分流都是其他插件无法比拟的。那么其搭配上用来过滤广告加速网站解析的ADGuard Home会怎么样呢？但由于OpenClash门槛较高，小白不易上手，以下简述设置流程。">
+<meta property="og:description" content="IPv6已普及多年，可看着我的“IPv4访问优先”，我不禁陷入了沉思，我觉得是时候该折腾折腾了。本文将从零开始教你如何开启IPv6。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://3o.hk/images/2023/01/02/image-20230102154019758.png">
-<meta property="og:image" content="https://3o.hk/images/2023/01/02/image-20230102154054241.png">
-<meta property="og:image" content="https://3o.hk/images/2023/01/02/image-20230102154128689.png">
-<meta property="og:image" content="https://3o.hk/images/2023/01/02/image-20230102154156468.png">
-<meta property="og:image" content="https://3o.hk/images/2023/01/02/image-20230102154240861.png">
-<meta property="og:image" content="https://3o.hk/images/2023/01/02/image-20230102154309550.png">
-<meta property="og:image" content="https://3o.hk/images/2023/01/02/image-20230102154357494.png">
-<meta property="article:published_time" content="2023-08-10T02:46:49.207Z">
-<meta property="article:modified_time" content="2023-08-10T09:57:16.837Z">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/pQCPH6qzrvmKNdB.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/ieBODJhT6GmU2nt.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/AXCuRU7WwF4pDk3.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/ZUBDoN2gwJYdqWj.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/QIAxJbtFCZ9B5NM.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/aWt86oUb9KLvg7i.png">
+<meta property="og:image" content="https://image.3001.net/images/20230128/16749119635639.jpg">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/cLXSq5xgbRrAnND.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/dIUkwmCgjAZ4HNt.png">
+<meta property="og:image" content="https://s2.loli.net/2023/12/31/jpX4mobf7kS2Nex.png">
+<meta property="article:published_time" content="2023-12-31T09:15:17.557Z">
+<meta property="article:modified_time" content="2023-12-31T09:42:28.452Z">
 <meta property="article:author" content="Laorentou#1337">
 <meta property="article:tag" content="老人头,laorentou,laorentou666">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://3o.hk/images/2023/01/02/image-20230102154019758.png">
+<meta name="twitter:image" content="https://s2.loli.net/2023/12/31/pQCPH6qzrvmKNdB.png">
 
 
-<link rel="canonical" href="https://lrt666.top/posts/5246fadb.html">
+<link rel="canonical" href="https://lrt666.top/posts/e52e9436.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lrt666.top/posts/5246fadb.html","path":"posts/5246fadb.html","title":"浅谈OpenClash与ADGuard Home的组合"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lrt666.top/posts/e52e9436.html","path":"posts/e52e9436.html","title":"个人折腾移动光猫开启IPv6教程"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>浅谈OpenClash与ADGuard Home的组合 | Laorentou#1337's Blog</title>
+<title>个人折腾移动光猫开启IPv6教程 | Laorentou#1337's Blog</title>
   
 
 
@@ -146,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenClash%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">OpenClash配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ADGuard-Home%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">ADGuard Home配置</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E8%B6%85%E7%BA%A7%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">获取超级管理员密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">2.</span> <span class="nav-text">关闭防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-%E6%96%B0%E5%BB%BA%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">修改&#x2F;新建连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E7%9A%84%E6%9C%89%E4%BA%9B%E9%80%89%E9%A1%B9%E6%97%A0%E6%B3%95%E8%A2%AB%E7%82%B9%E5%87%BB%EF%BC%9F"><span class="nav-number">4.1.</span> <span class="nav-text">为什么我的有些选项无法被点击？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%EF%BC%9A%E5%85%89%E7%8C%AB%E4%BC%98%E5%8C%96-%E5%85%B3%E9%97%AD%E7%9B%91%E6%8E%A7%E5%8A%9F%E8%83%BD"><span class="nav-number">5.</span> <span class="nav-text">附：光猫优化&amp;关闭监控功能</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -199,7 +202,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lrt666.top/posts/5246fadb.html">
+    <link itemprop="mainEntityOfPage" href="https://lrt666.top/posts/e52e9436.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -212,12 +215,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="浅谈OpenClash与ADGuard Home的组合 | Laorentou#1337's Blog">
+      <meta itemprop="name" content="个人折腾移动光猫开启IPv6教程 | Laorentou#1337's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          浅谈OpenClash与ADGuard Home的组合
+          个人折腾移动光猫开启IPv6教程
         </h1>
 
         <div class="post-meta-container">
@@ -229,7 +232,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-08-10 10:46:49 / 修改时间：17:57:16" itemprop="dateCreated datePublished" datetime="2023-08-10T10:46:49+08:00">2023-08-10</time>
+      <time title="创建时间：2023-12-31 17:15:17 / 修改时间：17:42:28" itemprop="dateCreated datePublished" datetime="2023-12-31T17:15:17+08:00">2023-12-31</time>
     </span>
 
   
@@ -246,7 +249,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>606</span>
+      <span>658</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -263,44 +266,69 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>OpenClash无疑是在Openwrt上我用过的最好的插件之一，其切换节点的速度与流媒体的分流都是其他插件无法比拟的。那么其搭配上用来过滤广告加速网站解析的ADGuard Home会怎么样呢？但由于OpenClash门槛较高，小白不易上手，以下简述设置流程。</p>
+    <div class="post-body" itemprop="articleBody"><p>IPv6已普及多年，可看着我的“IPv4访问优先”，我不禁陷入了沉思，我觉得是时候该折腾折腾了。本文将从零开始教你如何开启IPv6。</p>
 <span id="more"></span>
 
-<h2 id="OpenClash配置"><a href="#OpenClash配置" class="headerlink" title="OpenClash配置"></a>OpenClash配置</h2><p>来到主页，我们点击“配置文件订阅”，上方可以设置自动更新订阅，可根据需要自行设置。</p>
-<p>点击添加，设置名称与订阅。（<em>若机场不支持Clash，可以使用下方的在线订阅转换</em>，<strong>但请注意，在线订阅转换有泄露订阅地址的风险，请慎重使用。</strong>）填写完毕后更新即可。</p>
-<p><img src="https://3o.hk/images/2023/01/02/image-20230102154019758.png" alt="image-20230102154019758.png"></p>
-<p>接下来前往全局设置，DNS设置。关闭本地DNS劫持，打开自定义上游DNS服务器。在下方的列表中有DNS列表。若无特殊需要保持默认即可。最后保存并应用。</p>
-<p><img src="https://3o.hk/images/2023/01/02/image-20230102154054241.png" alt="image-20230102154054241.png"></p>
-<p><img src="https://3o.hk/images/2023/01/02/image-20230102154128689.png" alt="image-20230102154128689.png"></p>
-<p>至此，OpenClash设置部分结束。</p>
-<h2 id="ADGuard-Home配置"><a href="#ADGuard-Home配置" class="headerlink" title="ADGuard Home配置"></a>ADGuard Home配置</h2><p>若是第一次使用ADGuard Home，需要更新核心进行配置，配置过程不多赘述。</p>
-<p>配置完成后，启用ADGuard Home。 5553重定向修改为“作为dnsmasq的上游服务器”。</p>
-<p><img src="https://3o.hk/images/2023/01/02/image-20230102154156468.png" alt="image-20230102154156468.png"></p>
-<p>进入ADGuard Home后台。进入设置，DNS设置。修改上游DNS服务器为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:7874</span><br></pre></td></tr></table></figure>
+<h2 id="获取超级管理员密码"><a href="#获取超级管理员密码" class="headerlink" title="获取超级管理员密码"></a>获取超级管理员密码</h2><p>移动为了不让用户拥有过多操作权限，仅开放了部分供普通用户使用的普通账号，我们需要权限更高的超级管理员账号。</p>
+<p>获取超管账号密码的教程本文就不赘述了，网上有诸多大神分享。我的光猫型号为H2-3e，这是我的超管密码，各位不妨一试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">账号: CMCCAdmin</span><br><span class="line">密码: aDm8H%MdA</span><br></pre></td></tr></table></figure>
 
-<p>（<em>这是OpenClash的地址。我们需要让OpenClash作为唯一上游服务器。</em>）</p>
-<p>下方选择并行请求。</p>
-<p><img src="https://3o.hk/images/2023/01/02/image-20230102154240861.png" alt="image-20230102154240861.png"></p>
-<p>Bootstrap DNS 服务器填写你本地区的DNS（<em>若不知晓本地区的DNS，请自行搜索。</em>）</p>
-<p><img src="https://3o.hk/images/2023/01/02/image-20230102154309550.png" alt="image-20230102154309550.png"></p>
-<p>点击测试上游服务器后应用。（<em>部分老版本ADGuard Home会提示上游服务器无效，无视即可，正常使用</em>）</p>
-<p>来到过滤器，DNS拦截列表。添加你想要的规则。以下推荐几条自用规则。</p>
-<p>EasylistChina</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://easylist-downloads.adblockplus.org/easylistchina.txt</span><br></pre></td></tr></table></figure>
-
-<p>乘风视频</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.jsdelivr.net/gh/xinggsf/Adblock-Plus-Rule@master/mv.txt</span><br></pre></td></tr></table></figure>
-
-<p>anti-AD(Adblock+neohosts+yhosts+cjxlist+adhlist)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/anti-ad-easylist.txt</span><br></pre></td></tr></table></figure>
-
-<p>回到仪表盘。若DNS查询数增加则生效。</p>
-<p><img src="https://3o.hk/images/2023/01/02/image-20230102154357494.png" alt="image-20230102154357494.png"></p>
+<h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><p>因为防火墙可能会阻止获取IPv6地址，所以我们需要关闭防火墙。看图操作即可。</p>
+<p><img src="https://s2.loli.net/2023/12/31/pQCPH6qzrvmKNdB.png" alt="image-20231231162623115"></p>
+<p><img src="https://s2.loli.net/2023/12/31/ieBODJhT6GmU2nt.png" alt="image-20231231163017946"></p>
+<h2 id="修改-新建连接"><a href="#修改-新建连接" class="headerlink" title="修改&#x2F;新建连接"></a>修改&#x2F;新建连接</h2><p>登录超级管理员账号来到网络→连接信息，将你原来的连接信息截图保存备用。<strong>切记一定要截图</strong>，后续翻车根据此配置重新调试光猫即可。</p>
+<p>删除该连接，新建一个连接。IP协议版本选择<code>IPv4/v6</code>，模式选择<code>PPP</code>，端口绑定根据设备需要勾选。VLAN模式选择<code>改写</code>，填写你刚截图的<code>VLAN ID</code>和<code>宽带账号密码</code>。</p>
+<p><img src="https://s2.loli.net/2023/12/31/AXCuRU7WwF4pDk3.png" alt="image-20231231163149511"></p>
+<p><strong>重点来了</strong>，这些几项设置照着我的来：</p>
+<table>
+<thead>
+<tr>
+<th align="center">全局地址获取方式</th>
+<th>自适应</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>网关获取方式</strong></td>
+<td><strong>自适应</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>DNS获取方式</strong></td>
+<td><strong>自适应</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>前缀获取方式</strong></td>
+<td><strong>DHCPv6</strong></td>
+</tr>
+</tbody></table>
 <blockquote>
-<p><strong>请注意，应用后可能不会立即生效，稍等几分钟即可。笔者就是因为太心急，导致迟迟找不到有效方案，到后来才知晓需要稍等一段时间</strong>。</p>
+<p>为什么我的有些选项是灰色的，无法被点击？</p>
+<p>请看常见问题部分。</p>
 </blockquote>
-<p>至此，ADGuard Home设置结束，教程结束。</p>
+<p>调整完毕后插拔网线重新拨号（可选）。来到<code>状态→网络侧信息→IPv6连接信息</code>，若发现GUA处有IPv6地址则开启IPv6成功。</p>
+<p><img src="https://s2.loli.net/2023/12/31/ZUBDoN2gwJYdqWj.png" alt="image-20231231163414273"></p>
+<hr>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="为什么我的有些选项无法被点击？"><a href="#为什么我的有些选项无法被点击？" class="headerlink" title="为什么我的有些选项无法被点击？"></a>为什么我的有些选项无法被点击？</h3><p>右键你无法点击的选项，点击检查，删除代码内的“<code>disabled</code>”即可。</p>
+<p><img src="https://s2.loli.net/2023/12/31/QIAxJbtFCZ9B5NM.png" alt="image-20231231163521180"></p>
+<h2 id="附：光猫优化-关闭监控功能"><a href="#附：光猫优化-关闭监控功能" class="headerlink" title="附：光猫优化&amp;关闭监控功能"></a>附：光猫优化&amp;关闭监控功能</h2><p>我们不需要QoS，关闭即可。</p>
+<p><img src="https://s2.loli.net/2023/12/31/aWt86oUb9KLvg7i.png" alt="image-20231231164316202"></p>
+<p>移动通过TR069连接远程操控我们的光猫。定时修改超管密码，删除该连接即可。（我的已经删掉了，就用用别人的罢，来源于参考资料2）</p>
+<p><img src="https://image.3001.net/images/20230128/16749119635639.jpg" alt="image-tr069"></p>
+<p>远程管理那也要把使能周期上报关闭。</p>
+<p><img src="https://s2.loli.net/2023/12/31/cLXSq5xgbRrAnND.png" alt="image-20231231164604893"></p>
+<blockquote>
+<p>为什么我的有些选项是灰色的，无法被点击？</p>
+<p>请看常见问题部分。</p>
+</blockquote>
+<hr>
+<p>本文结束，Enjoy！享受IPv6带来的乐趣。</p>
+<p><img src="https://s2.loli.net/2023/12/31/dIUkwmCgjAZ4HNt.png" alt="image-20231231164119853"></p>
+<p><img src="https://s2.loli.net/2023/12/31/jpX4mobf7kS2Nex.png" alt="image-20231231164145548"></p>
+<blockquote>
+<p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yaoyue68/p/16815152.html">https://www.cnblogs.com/yaoyue68/p/16815152.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://pve.sqlsec.com/9/5/">https://pve.sqlsec.com/9/5/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/thread-8244812-1-1.html">https://www.right.com.cn/forum/thread-8244812-1-1.html</a></p>
+</blockquote>
 
     </div>
 
@@ -314,11 +342,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/posts/6a9b455f.html" rel="prev" title="ChatGPT绕过道德限制提示词收集">
+                  <i class="fa fa-angle-left"></i> ChatGPT绕过道德限制提示词收集
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/73874834.html" rel="next" title="使用软路由结合Alist搭建个人网盘">
-                  使用软路由结合Alist搭建个人网盘 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -446,7 +474,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"laorentou666","repo":"laorentou666.github.io","client_id":"7266650e88f3597ab655","client_secret":"bed33da088447cf0028f32edd6a2e1e72cde0ed2","admin_user":"laorentou666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"949c7a05a7b177034d3d23518ebb2628"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"laorentou666","repo":"laorentou666.github.io","client_id":"7266650e88f3597ab655","client_secret":"bed33da088447cf0028f32edd6a2e1e72cde0ed2","admin_user":"laorentou666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"44bb7122cdf198858894a50f33b8d855"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
