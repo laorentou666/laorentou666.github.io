@@ -237,22 +237,22 @@
 
 <h2 id="OpenClash配置"><a href="#OpenClash配置" class="headerlink" title="OpenClash配置"></a>OpenClash配置</h2><p>来到主页，我们点击“配置文件订阅”，上方可以设置自动更新订阅，可根据需要自行设置。</p>
 <p>点击添加，设置名称与订阅。（<em>若机场不支持Clash，可以使用下方的在线订阅转换</em>，<strong>但请注意，在线订阅转换有泄露订阅地址的风险，请慎重使用。</strong>）填写完毕后更新即可。</p>
-<p><img src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.8vn0xzig5y.webp" alt="image"></p>
+<p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.8vn0xzig5y.webp" alt="image"></p>
 <p>接下来前往全局设置，DNS设置。关闭本地DNS劫持，打开自定义上游DNS服务器。在下方的列表中有DNS列表。若无特殊需要保持默认即可。最后保存并应用。</p>
-<p><img src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.4xunhb7hrf.webp" alt="image"></p>
-<p><img src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.esmec2350.webp" alt="image"></p>
+<p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.4xunhb7hrf.webp" alt="image"></p>
+<p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.esmec2350.webp" alt="image"></p>
 <p>至此，OpenClash设置部分结束。</p>
 <h2 id="ADGuard-Home配置"><a href="#ADGuard-Home配置" class="headerlink" title="ADGuard Home配置"></a>ADGuard Home配置</h2><p>若是第一次使用ADGuard Home，需要更新核心进行配置，配置过程不多赘述。</p>
 <p>配置完成后，启用ADGuard Home。 5553重定向修改为“作为dnsmasq的上游服务器”。</p>
-<p><img src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.lvu9roaty.webp" alt="image"></p>
+<p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.lvu9roaty.webp" alt="image"></p>
 <p>进入ADGuard Home后台。进入设置，DNS设置。修改上游DNS服务器为</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:7874</span><br></pre></td></tr></table></figure>
 
 <p>（<em>这是OpenClash的地址。我们需要让OpenClash作为唯一上游服务器。</em>）</p>
 <p>下方选择并行请求。</p>
-<p><img src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.4jo7qfzdkh.webp" alt="image"></p>
+<p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.4jo7qfzdkh.webp" alt="image"></p>
 <p>Bootstrap DNS 服务器填写你本地区的DNS（<em>若不知晓本地区的DNS，请自行搜索。</em>）</p>
-<p><img src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.6bh6lcisvm.webp" alt="image"></p>
+<p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/image.6bh6lcisvm.webp" alt="image"></p>
 <p>点击测试上游服务器后应用。（<em>部分老版本ADGuard Home会提示上游服务器无效，无视即可，正常使用</em>）</p>
 <p>来到过滤器，DNS拦截列表。添加你想要的规则。以下推荐几条自用规则。</p>
 <p>EasylistChina</p>
@@ -270,7 +270,7 @@
 
 
 <p>回到仪表盘。若DNS查询数增加则生效。</p>
-<p><img src="https://s2.loli.net/2023/01/02/8O93yViXZj2vHcE.png" alt="image-20230102154357494.png"></p>
+<p><img data-src="https://s2.loli.net/2023/01/02/8O93yViXZj2vHcE.png" alt="image-20230102154357494.png"></p>
 <blockquote>
 <p><strong>请注意，应用后可能不会立即生效，稍等几分钟即可。笔者就是因为太心急，导致迟迟找不到有效方案，到后来才知晓需要稍等一段时间</strong>。</p>
 </blockquote>
@@ -403,7 +403,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"laorentou666# GitHub repo owner","repo":"laorentou666.github.io# Repository name to store issues","client_id":"7266650e88f3597ab655# GitHub Application Client ID","client_secret":"8ec9d9bcab3d318cad77fad89460b85772c5d44c# GitHub Application Client Secret","admin_user":"laorentou666# GitHub repo owner and collaborators, only these guys can initialize gitHub issues","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"949c7a05a7b177034d3d23518ebb2628"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"laorentou666# GitHub repo owner","repo":"laorentou666.github.io# Repository name to store issues","client_id":"Ov23liVwKKVTToZ5YPyZ# GitHub Application Client ID","client_secret":"a052a39e247192171afb8bb71083589ec07c8703# GitHub Application Client Secret","admin_user":"laorentou666# GitHub repo owner and collaborators, only these guys can initialize gitHub issues","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"949c7a05a7b177034d3d23518ebb2628"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
