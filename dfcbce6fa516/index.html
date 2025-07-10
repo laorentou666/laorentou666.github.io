@@ -232,7 +232,7 @@
 </ul>
 <span id="more"></span>
 
-<p><img data-src="https://s2.loli.net/2023/06/21/h96aHEr54UZCm7n.png" alt="QQ截图20230621211119"></p>
+<p><img src="https://s2.loli.net/2023/06/21/h96aHEr54UZCm7n.png" alt="QQ截图20230621211119"></p>
 <h2 id="设备选择"><a href="#设备选择" class="headerlink" title="设备选择"></a>设备选择</h2><p>你可以购买软路由或者Linux服务器，笔者使用的是R2s，体积小巧，价格也很美丽，适合新手使用，Linux服务器的操作大同小异，本视频使用软路由搭建。</p>
 <h2 id="下载固件"><a href="#下载固件" class="headerlink" title="下载固件"></a>下载固件</h2><p>笔者目前正在使用的是<a target="_blank" rel="noopener" href="https://github.com/DHDAXCW/NanoPi-R2S-rk3328">骷髅头的固件</a>，插件多，支持Docker，稳定性好。</p>
 <p>（<em>由于后期要进行端口映射，所以推荐下载带docker的版本，一行命令解决</em>）</p>
@@ -245,19 +245,19 @@
 <p><a target="_blank" rel="noopener" href="https://alist.nn.ci/tool/aliyundrive/request.html">https://alist.nn.ci/tool/aliyundrive/request.html</a></p>
 </blockquote>
 <p>登录你的阿里云盘账号后点击允许，然后就能获得你的刷新令牌。（保存好待会要用）</p>
-<p><img data-src="https://s2.loli.net/2023/07/07/HjbmK8FMQTEPhy7.png" alt="image-20230707163811285"></p>
-<p><img data-src="https://s2.loli.net/2023/07/07/jXazCAUgKi3q4rH.png" alt="image-20230707171847209"></p>
+<p><img src="https://s2.loli.net/2023/07/07/HjbmK8FMQTEPhy7.png" alt="image-20230707163811285"></p>
+<p><img src="https://s2.loli.net/2023/07/07/jXazCAUgKi3q4rH.png" alt="image-20230707171847209"></p>
 <p>来到Alist管理页，点击存储，添加，驱动选择阿里云盘Open，挂载路径可以随意，刷新令牌填写刚才获取到的，移除方式随意，添加即可。</p>
-<p><img data-src="https://s2.loli.net/2023/07/07/imcWnDfKHTV5oXF.png" alt="image-20230707171706540"></p>
+<p><img src="https://s2.loli.net/2023/07/07/imcWnDfKHTV5oXF.png" alt="image-20230707171706540"></p>
 <h2 id="使用端口映射将Alist挂载至公网"><a href="#使用端口映射将Alist挂载至公网" class="headerlink" title="使用端口映射将Alist挂载至公网"></a>使用端口映射将Alist挂载至公网</h2><p>端口映射推荐使用<a target="_blank" rel="noopener" href="https://openfrp.net/">OpenFrp</a>，免费流量多，注册账号不多赘述，来到创建隧道页，类型选择HTTPS，本地地址填写192.168.11.1，本地端口填写5244，绑定域名填写你的个人域名，远程端口可随意。</p>
-<p><img data-src="https://s2.loli.net/2023/07/07/7Zfu3VPTF1sIlhE.png" alt="image-20230707172209952"></p>
+<p><img src="https://s2.loli.net/2023/07/07/7Zfu3VPTF1sIlhE.png" alt="image-20230707172209952"></p>
 <p>在OpenFrp的软件下载页使用docker run命令运行。</p>
 <p><code>docker run -d --name of openfrp/frpc:latest -u &lt;访问密钥&gt; -p &lt;隧道ID&gt;</code></p>
 <p>建议将重启策略改为always以保持后台运行。</p>
 <h2 id="套用cloudflareCDN"><a href="#套用cloudflareCDN" class="headerlink" title="套用cloudflareCDN"></a>套用cloudflareCDN</h2><p>来到OpenFrp的配置文件页，选择你的节点，复制server_addr后的地址。</p>
-<p><img data-src="https://s2.loli.net/2023/07/07/nmCZ6gBrwqN93V8.png" alt="image-20230707172329499"></p>
+<p><img src="https://s2.loli.net/2023/07/07/nmCZ6gBrwqN93V8.png" alt="image-20230707172329499"></p>
 <p>在Cloudflare后台内添加CNAME解析。（图是以前截的，就那意思罢）</p>
-<p><img data-src="https://s2.loli.net/2023/07/07/wluJ2Tyi6QCGo1D.png" alt="image-20230707172718026"></p>
+<p><img src="https://s2.loli.net/2023/07/07/wluJ2Tyi6QCGo1D.png" alt="image-20230707172718026"></p>
 <p>稍等片刻后即可通过个人域名访问网站。</p>
 <p>至此，你的个人网盘已经搭建完成，Enjoy！</p>
 <h2 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h2><p>看板娘：</p>
