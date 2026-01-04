@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lrt666.top","root":"/","images":"/images","scheme":"Mist","darkmode":"auto","version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="在使用Nikki访问Google时出现“您的连接不是私密连接”提示，上网搜索发现可能是DNS被劫持导致的，搞了两三天终于完工了，话不多说，马上开整">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nikki + SmartDNS实现DNS防泄露">
+<meta property="og:url" content="https://lrt666.top/posts/692943e8.html">
+<meta property="og:site_name" content="Laorentou#1337&#39;s Blog">
+<meta property="og:description" content="在使用Nikki访问Google时出现“您的连接不是私密连接”提示，上网搜索发现可能是DNS被劫持导致的，搞了两三天终于完工了，话不多说，马上开整">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/laorentou666/picx-images-hosting/raw/master/Nikki%20+%20SmartDNS%E5%AE%9E%E7%8E%B0DNS%E9%98%B2%E6%B3%84%E9%9C%B2/google_private_connection.png">
+<meta property="og:image" content="https://github.com/laorentou666/picx-images-hosting/raw/master/Nikki%20+%20SmartDNS%E5%AE%9E%E7%8E%B0DNS%E9%98%B2%E6%B3%84%E9%9C%B2/dns_hijack.png">
+<meta property="og:image" content="https://github.com/laorentou666/picx-images-hosting/raw/master/Nikki%20+%20SmartDNS%E5%AE%9E%E7%8E%B0DNS%E9%98%B2%E6%B3%84%E9%9C%B2/ip_leak.png">
+<meta property="article:published_time" content="2025-10-18T14:58:56.773Z">
+<meta property="article:modified_time" content="2025-12-05T05:32:55.515Z">
+<meta property="article:author" content="Laorentou#1337">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/laorentou666/picx-images-hosting/raw/master/Nikki%20+%20SmartDNS%E5%AE%9E%E7%8E%B0DNS%E9%98%B2%E6%B3%84%E9%9C%B2/google_private_connection.png">
+
+
+<link rel="canonical" href="https://lrt666.top/posts/692943e8.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lrt666.top/posts/692943e8.html","path":"posts/692943e8.html","title":"Nikki + SmartDNS实现DNS防泄露"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Nikki + SmartDNS实现DNS防泄露 | Laorentou#1337's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Laorentou#1337's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Welcome!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A2%8E%E7%A2%8E%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">碎碎念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Laorentou#1337</p>
+  <div class="site-description" itemprop="description">偏教程向的个人博客，欢迎各位大佬们的访问！</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lrt666.top/posts/692943e8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Laorentou#1337">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Laorentou#1337's Blog">
+      <meta itemprop="description" content="偏教程向的个人博客，欢迎各位大佬们的访问！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Nikki + SmartDNS实现DNS防泄露 | Laorentou#1337's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nikki + SmartDNS实现DNS防泄露
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-10-18 22:58:56" itemprop="dateCreated datePublished" datetime="2025-10-18T22:58:56+08:00">2025-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-05 13:32:55" itemprop="dateModified" datetime="2025-12-05T13:32:55+08:00">2025-12-05</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在使用Nikki访问Google时出现“您的连接不是私密连接”提示，上网搜索发现可能是DNS被劫持导致的，搞了两三天终于完工了，话不多说，马上开整</p>
+<span id="more"></span>
+
+<blockquote>
+<p>前排提醒：不是很推荐这种套娃方式，用Nikki自带的DNS分流规则即可（把“遵循分流规则”选项打开），还不放心就走DoH，广告过滤走rule-providers，速度实测嘎嘎快</p>
+<p><a target="_blank" rel="noopener" href="https://blog.skk.moe/post/lets-talk-about-dns-cdn-fake-ip/">是什么，为什么，怎么做 —— 谈谈 DNS 泄漏、CDN 访问优化与 Fake IP</a></p>
+</blockquote>
+<img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/Nikki + SmartDNS实现DNS防泄露/google_private_connection.png" alt="google_private_connection" style="zoom:40%;" />
+
+<img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/Nikki + SmartDNS实现DNS防泄露/dns_hijack.png" alt="dns_hijack" style="zoom:55%;" />
+
+<p>在OpenWrt上装好SmartDNS和Nikki，不多赘述了（可以看看我上一篇Nikki配置教程）</p>
+<p>SmartDNS设置：</p>
+<p><code>本地端口</code>改成你喜欢的端口号，这个端口分流走国内，我这里是6053，<strong>取消</strong>勾选<code>自动设置 Dnsmasq</code></p>
+<p>高级设置：测速模式选<code>tcp:80,tcp:443,ping</code>，缓存大小填<code>20000</code>（依据参考资料）</p>
+<p>v6服务器看个人需求，我这关掉了，其他默认就行</p>
+<p>第二DNS服务器：勾选<code>启用</code>，端口任意但不与前面冲突（我这是6553），这个端口分流走国外</p>
+<p><code>服务器组</code>填一个喜欢的名称，我这里是Global，其他默认就行</p>
+<p>来到下方的<code>上游服务器</code></p>
+<table>
+<thead>
+<tr>
+<th align="left">DNS 服务器名称</th>
+<th>DNS 服务器 IP</th>
+<th>DNS 服务器端口</th>
+<th>协议类型</th>
+<th>服务器组</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">随意 这里是腾讯云的DNS</td>
+<td>223.5.5.5&#x2F;dns-query</td>
+<td>无</td>
+<td>https</td>
+<td>无</td>
+</tr>
+<tr>
+<td align="left">随意 这里是cf的dns</td>
+<td>dns.cloudflare.com&#x2F;dns-query</td>
+<td>无</td>
+<td>https</td>
+<td>Global（填你走国外的服务器组）</td>
+</tr>
+</tbody></table>
+<p>（我这里cf的doh好像不能直连了，用腾讯的doh也是可以的）</p>
+<p>点击Global服务器组的<code>编辑</code>，高级设置，勾选<code>从默认组中排除</code></p>
+<p>保存应用即可</p>
+<p>Nikki设置：</p>
+<p>混入设置→DNS设置</p>
+<p>v6设置同上，我这关了</p>
+<p><code>DNS模式</code>我用的Fake-IP没问题，网上有说要用Redir-host的，欢迎各位佬在评论区交流</p>
+<p>勾选<code>覆盖DNS服务器</code></p>
+<table>
+<thead>
+<tr>
+<th align="left">启用</th>
+<th>类型</th>
+<th>DNS服务器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">√</td>
+<td>default-nameserver</td>
+<td>127.0.0.1:6053</td>
+</tr>
+<tr>
+<td align="left">√</td>
+<td>proxy-nameserver</td>
+<td>127.0.0.1:6553</td>
+</tr>
+<tr>
+<td align="left">√</td>
+<td>nameserver</td>
+<td>127.0.0.1:6553</td>
+</tr>
+</tbody></table>
+<p>勾选<code>覆盖DNS查询策略</code></p>
+<table>
+<thead>
+<tr>
+<th>启用</th>
+<th>匹配</th>
+<th>DNS服务器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>√</td>
+<td>geosite:cn</td>
+<td>127.0.0.1:6053（走国内）</td>
+</tr>
+<tr>
+<td>√</td>
+<td>geosite:geolocation-!cn</td>
+<td>127.0.0.1:6553（走国外）</td>
+</tr>
+</tbody></table>
+<p>保存应用即可</p>
+<p>到 <a target="_blank" rel="noopener" href="https://ipleak.net/">https://ipleak.net/</a> 检测DNS泄露情况，清一色的Cloudflare就行了（以你国外上游DNS决定）</p>
+<img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/Nikki + SmartDNS实现DNS防泄露/ip_leak.png" alt="ip_leak" style="zoom:45%;" />
+
+<hr>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>搞完发现电脑没问题了，手机还是漏的，Google还是上不去，死活查不出原因，后来发现Magisk内装了个AdGuardHome模块，禁用就行了</p>
+<p>搞半天结果是自己的原因。。。</p>
+<p>所以其实根本没必要搞这种套娃的，直接在Nikki的DNS配置页加上就行，算了折都折腾了还是写篇文章吧。。。</p>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/32229915">公共DNS哪家强？</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.20040313.xyz/2023/09/22/openwrtmosdnsopenclash%E9%98%B2%E6%AD%A2dns%E6%B3%84%E6%BC%8F/">OpenClash+SmartDNS防止dns泄漏 • LeaF Blog</a></p>
+<p><a target="_blank" rel="noopener" href="https://alili.website/posts/2025/smartdns%E8%A7%A3%E6%9E%90+openclash%E5%88%86%E6%B5%81/#41%E8%BF%9E%E9%80%9A%E6%80%A7%E9%AA%8C%E8%AF%81">SmartDNS负责解析，OpenClash负责分流 | 个人学习经验分享</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.hans362.cn/post/how-i-fight-against-campus-dns-pollution/">对抗校园网 DNS 污染，我有妙招 | Hans362 ‘s Blog</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/nikkinikki-org/OpenWrt-nikki/discussions/527">Nikki+AdGH设置成功 · nikkinikki-org&#x2F;OpenWrt-nikki</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sbwml/luci-app-mosdns/issues/113#issuecomment-1687374407">openclash使用fakeip模式，应该如何设置使用mosdns来解析？ · Issue #113 · sbwml&#x2F;luci-app-mosdns</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luxiyue.com/openwrt/openwrt%E5%AE%89%E8%A3%85%E5%B9%B6%E9%85%8D%E7%BD%AEsmartdns/">OpenWrt安装并配置SmartDNS - Forever Young</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/nikkinikki-org/OpenWrt-nikki/discussions/197">openclash使用fakeip模式，应该如何设置使用mosdns来解析？ #113</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/730a460d.html" rel="prev" title="用Wplacer在Wplace.live自动作画">
+                  <i class="fa fa-angle-left"></i> 用Wplacer在Wplace.live自动作画
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/bdd007a3.html" rel="next" title="使用Zeabur免费部署Napcat + Astrbot QQ机器人">
+                  使用Zeabur免费部署Napcat + Astrbot QQ机器人 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2023 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Laorentou#1337</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div><a href="https://icp.gov.moe/?keyword=20231337" target="_blank">萌ICP备20231337号</a>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"laorentou666","repo":"laorentou666.github.io","client_id":"Ov23liVwKKVTToZ5YPyZ","client_secret":"bbaff04c5005ec42b907679615e5afbd7a2ce603","admin_user":"laorentou666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"60fafe289df191e81ed158f6f3e21a0e"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>
