@@ -20,28 +20,26 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"lrt666.top","root":"/","images":"/images","scheme":"Mist","darkmode":"auto","version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="自从Alist被收购，我的网盘更换为OpenList，以下是我用OpenList挂载Google Drive时遇到的一些问题，遂有本文记录。">
+    <meta name="description" content="如题，想在手机上玩樱花萌放，但网上没有模拟器版，只好求助Winlator，在配置这方面折腾了挺久才玩上，写篇文章记录一下吧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用OpenList挂载Google Drive">
-<meta property="og:url" content="https://lrt666.top/posts/ac51d564.html">
+<meta property="og:title" content="Winlator for Galgame的配置">
+<meta property="og:url" content="https://lrt666.top/posts/cdec2e8f.html">
 <meta property="og:site_name" content="Laorentou#1337&#39;s Blog">
-<meta property="og:description" content="自从Alist被收购，我的网盘更换为OpenList，以下是我用OpenList挂载Google Drive时遇到的一些问题，遂有本文记录。">
+<meta property="og:description" content="如题，想在手机上玩樱花萌放，但网上没有模拟器版，只好求助Winlator，在配置这方面折腾了挺久才玩上，写篇文章记录一下吧">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/laorentou666/picx-images-hosting/raw/master/%E4%BD%BF%E7%94%A8OpenList%E6%8C%82%E8%BD%BDGoogle%20Drive/googledrive_forbiddened.webp">
-<meta property="article:published_time" content="2025-07-11T06:23:53.199Z">
-<meta property="article:modified_time" content="2026-02-22T07:03:12.121Z">
+<meta property="article:published_time" content="2026-02-22T07:10:21.709Z">
+<meta property="article:modified_time" content="2026-02-22T07:14:34.714Z">
 <meta property="article:author" content="Laorentou#1337">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/laorentou666/picx-images-hosting/raw/master/%E4%BD%BF%E7%94%A8OpenList%E6%8C%82%E8%BD%BDGoogle%20Drive/googledrive_forbiddened.webp">
 
 
-<link rel="canonical" href="https://lrt666.top/posts/ac51d564.html">
+<link rel="canonical" href="https://lrt666.top/posts/cdec2e8f.html">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lrt666.top/posts/ac51d564.html","path":"posts/ac51d564.html","title":"使用OpenList挂载Google Drive"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://lrt666.top/posts/cdec2e8f.html","path":"posts/cdec2e8f.html","title":"Winlator for Galgame的配置"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>使用OpenList挂载Google Drive | Laorentou#1337's Blog</title>
+<title>Winlator for Galgame的配置 | Laorentou#1337's Blog</title>
   
 
 
@@ -127,7 +125,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%94%A8Google-Drive-API"><span class="nav-number">1.</span> <span class="nav-text">启用Google Drive API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BAAPI%E9%85%8D%E7%BD%AEclient-ID%E5%92%8Cclient-secret"><span class="nav-number">2.</span> <span class="nav-text">为API配置client ID和client secret</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%B5%8B%E8%AF%95%E7%94%A8%E6%88%B7"><span class="nav-number">3.</span> <span class="nav-text">添加测试用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%88%B7%E6%96%B0%E4%BB%A4%E7%89%8C"><span class="nav-number">4.</span> <span class="nav-text">获取刷新令牌</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8OpenList%E5%86%85%E6%8C%82%E8%BD%BDGoogle-Drive"><span class="nav-number">5.</span> <span class="nav-text">在OpenList内挂载Google Drive</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Winlator"><span class="nav-number">1.</span> <span class="nav-text">安装Winlator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E9%AB%98%E9%80%9A%E9%A9%B1%E5%8A%A8%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">下载高通驱动（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E5%AE%B9%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">新建容器</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +166,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lrt666.top/posts/ac51d564.html">
+    <link itemprop="mainEntityOfPage" href="https://lrt666.top/posts/cdec2e8f.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -181,12 +179,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="使用OpenList挂载Google Drive | Laorentou#1337's Blog">
+      <meta itemprop="name" content="Winlator for Galgame的配置 | Laorentou#1337's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用OpenList挂载Google Drive
+          Winlator for Galgame的配置
         </h1>
 
         <div class="post-meta-container">
@@ -196,15 +194,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2025-07-11 14:23:53" itemprop="dateCreated datePublished" datetime="2025-07-11T14:23:53+08:00">2025-07-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-02-22 15:03:12" itemprop="dateModified" datetime="2026-02-22T15:03:12+08:00">2026-02-22</time>
+      <time title="创建时间：2026-02-22 15:10:21 / 修改时间：15:14:34" itemprop="dateCreated datePublished" datetime="2026-02-22T15:10:21+08:00">2026-02-22</time>
     </span>
 
   
@@ -223,22 +215,50 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>自从Alist被收购，我的网盘更换为OpenList，以下是我用OpenList挂载Google Drive时遇到的一些问题，遂有本文记录。</p>
+    <div class="post-body" itemprop="articleBody"><p>如题，想在手机上玩樱花萌放，但网上没有模拟器版，只好求助Winlator，在配置这方面折腾了挺久才玩上，写篇文章记录一下吧</p>
 <span id="more"></span>
 
-<p>我在OpenList获取刷新令牌页面勾选了<code>使用OpenList供的参数</code>登录谷歌账号后提示此应用已被阻止，且没有文档中提示的高级按钮。</p>
-<img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/使用OpenList挂载Google Drive/googledrive_forbiddened.webp" style="zoom:40%;" />
-
-<h2 id="启用Google-Drive-API"><a href="#启用Google-Drive-API" class="headerlink" title="启用Google Drive API"></a>启用Google Drive API</h2><p>在Google cloud控制台中找到<code>Google Drive API</code>并启用它，此处不多赘述。</p>
-<h2 id="为API配置client-ID和client-secret"><a href="#为API配置client-ID和client-secret" class="headerlink" title="为API配置client ID和client secret"></a>为API配置client ID和client secret</h2><p>在启用的Google Drive API左侧的凭据页内创建一个Oauth 2.0客户端ID凭据，应用类型选择Web应用，在已获授权的重定向URI中添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://api.oplist.org/googleui/callback</span><br></pre></td></tr></table></figure>
-
-<p>保存即可。</p>
-<p>然后你会收到<code>Client ID</code>和<code>Client secret</code>，此处建议将这两个值下载保存，因为<code>Client secret</code>在关闭本页后将无法被查看。</p>
-<h2 id="添加测试用户"><a href="#添加测试用户" class="headerlink" title="添加测试用户"></a>添加测试用户</h2><p>在API和服务页的左侧选择<code>OAuth权限请求页面</code>，选择<code>目标对象</code>，在下方的测试用户内添加一个，填写你的Google邮箱即可。</p>
-<h2 id="获取刷新令牌"><a href="#获取刷新令牌" class="headerlink" title="获取刷新令牌"></a>获取刷新令牌</h2><p>访问<a href="">https://api.oplist.org</a>，网盘名称选择<code>GoogleDrive Login (OAuth2)</code>，取消勾选<code>使用OpenList提供的参数</code>，填写你的<code>Client ID</code>和<code>Client secret</code>点击<code>获取token</code>，登录对应的Google账号后一路允许即可获取到刷新令牌。</p>
-<h2 id="在OpenList内挂载Google-Drive"><a href="#在OpenList内挂载Google-Drive" class="headerlink" title="在OpenList内挂载Google Drive"></a>在OpenList内挂载Google Drive</h2><p>在OpenList后台添加存储，驱动选择谷歌云盘，挂载路径自行填写，填写获取到的刷新令牌，取消勾选使用在线API，填写你的客户端ID和客户端密钥，保存即可。</p>
-<p>还没看懂？录个<a target="_blank" rel="noopener" href="https://github.com/laorentou666/picx-images-hosting/raw/master/%E4%BD%BF%E7%94%A8OpenList%E6%8C%82%E8%BD%BDGoogle_Drive/gd.mp4">视频</a>总会了吧<del>（马赛克打的最多的一集）</del></p>
+<p>站长设备信息：一加13T 骁龙8 Elite ColorOS15 Android15</p>
+<h2 id="安装Winlator"><a href="#安装Winlator" class="headerlink" title="安装Winlator"></a>安装Winlator</h2><p>测试下来推荐用<a target="_blank" rel="noopener" href="https://github.com/Stredohori/Winlator-CMOD/releases">CMod版</a></p>
+<h2 id="下载高通驱动（可选）"><a href="#下载高通驱动（可选）" class="headerlink" title="下载高通驱动（可选）"></a>下载高通驱动（可选）</h2><p>高通CPU可<a target="_blank" rel="noopener" href="https://github.com/K11MCH1/AdrenoToolsDrivers/releases">在这里</a>下载驱动以获得更好的游戏体验，8e下载<a target="_blank" rel="noopener" href="https://github.com/K11MCH1/AdrenoToolsDrivers/releases/download/v26.0.0-rc08/turnip_a8xx.zip">turnip_a8xx.zip</a>并在CMOD侧边栏导入即可</p>
+<p>安装完毕后该给的权限给一下，进入本文重点——</p>
+<h2 id="新建容器"><a href="#新建容器" class="headerlink" title="新建容器"></a>新建容器</h2><p>不废话，没写的都默认，写了的照着改就行</p>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Graphics Driver</td>
+<td>Wrapper</td>
+</tr>
+<tr>
+<td>Graphics Driver Version（位于右侧齿轮按钮内）</td>
+<td>选择对应CPU驱动</td>
+</tr>
+<tr>
+<td>DX Wrapper</td>
+<td>WineD3D</td>
+</tr>
+<tr>
+<td>Video Memory Size（位于右侧齿轮按钮内）</td>
+<td>4096MB</td>
+</tr>
+</tbody></table>
+<p>下方标签页右滑至<code>Advanced</code></p>
+<p><code>Box64 Preset</code>: Performance</p>
+<p><code>Startup Selection</code>: Normal (Load all services)</p>
+<p>下边核心调度只保留大核 &#x2F; 超大核 (CPU 2-7)</p>
+<p>至此容器配置完毕，启动容器运行游戏即可</p>
+<p>注意：</p>
+<ul>
+<li>游戏路径建议全英文，否则启动可能报错</li>
+<li>播放OP动画时游戏会黑屏，最小化窗口并重新打开即可</li>
+</ul>
+<p>附一镜到底<a target="_blank" rel="noopener" href="https://github.com/laorentou666/picx-images-hosting/raw/master/Winlator_for_Galgame%E7%9A%84%E9%85%8D%E7%BD%AE/2026-02-22%2014-38-08_x264.mp4">视频</a></p>
+<p>为什么DXVK不行？？？嘛算了至少能玩了，欢迎评论区大佬提出其他配置方案</p>
 
     </div>
 
@@ -252,14 +272,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/posts/3af63ce1.html" rel="prev" title="在Hexo Next主题下添加一言语录">
-                  <i class="fa fa-angle-left"></i> 在Hexo Next主题下添加一言语录
+                <a href="/posts/8dc45a4d.html" rel="prev" title="将AI机器人部署在QQ群聊内有感">
+                  <i class="fa fa-angle-left"></i> 将AI机器人部署在QQ群聊内有感
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/posts/8f2b1ddb.html" rel="next" title="移动光猫允许IPv6入站解决方案">
-                  移动光猫允许IPv6入站解决方案 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -327,7 +344,7 @@
 </noscript>
 <link rel="stylesheet" href="https://cdn.jsdmirror.com/npm/gitalk@1.8.0/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"laorentou666","repo":"laorentou666.github.io","client_id":"Ov23liVwKKVTToZ5YPyZ","client_secret":"bbaff04c5005ec42b907679615e5afbd7a2ce603","admin_user":"laorentou666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdmirror.com/npm/gitalk@1.8.0/dist/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"37e1ab0707e8b3103b138d5891e0fb2f"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"laorentou666","repo":"laorentou666.github.io","client_id":"Ov23liVwKKVTToZ5YPyZ","client_secret":"bbaff04c5005ec42b907679615e5afbd7a2ce603","admin_user":"laorentou666","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdmirror.com/npm/gitalk@1.8.0/dist/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4bca186d7b65aa8cf0e939b4cfedd0c6"}</script>
 <script src="/js/third-party/comments/gitalk.js" defer></script>
 
 </body>
