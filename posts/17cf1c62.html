@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://github.com/laorentou666/picx-images-hosting/raw/master/%E8%8B%8D%E4%B9%8B%E5%BD%BC%E6%96%B9%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A5%8F%20%E6%98%8E%E6%97%A5%E9%A6%99fd%20AI%E9%85%8D%E9%9F%B3%E8%A1%A5%E5%85%A8%20%E9%99%84%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/image%204.png">
 <meta property="og:image" content="https://github.com/laorentou666/picx-images-hosting/raw/master/%E8%8B%8D%E4%B9%8B%E5%BD%BC%E6%96%B9%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A5%8F%20%E6%98%8E%E6%97%A5%E9%A6%99fd%20AI%E9%85%8D%E9%9F%B3%E8%A1%A5%E5%85%A8%20%E9%99%84%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/image%205.png">
 <meta property="article:published_time" content="2026-04-29T01:30:57.524Z">
-<meta property="article:modified_time" content="2026-04-29T01:59:29.169Z">
+<meta property="article:modified_time" content="2026-04-29T02:10:30.133Z">
 <meta property="article:author" content="Laorentou#1337">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://github.com/laorentou666/picx-images-hosting/raw/master/%E8%8B%8D%E4%B9%8B%E5%BD%BC%E6%96%B9%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A5%8F%20%E6%98%8E%E6%97%A5%E9%A6%99fd%20AI%E9%85%8D%E9%9F%B3%E8%A1%A5%E5%85%A8%20%E9%99%84%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/image.png">
@@ -204,7 +204,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2026-04-29 09:30:57 / 修改时间：09:59:29" itemprop="dateCreated datePublished" datetime="2026-04-29T09:30:57+08:00">2026-04-29</time>
+      <time title="创建时间：2026-04-29 09:30:57 / 修改时间：10:10:30" itemprop="dateCreated datePublished" datetime="2026-04-29T09:30:57+08:00">2026-04-29</time>
     </span>
 
   
@@ -226,20 +226,20 @@
     <div class="post-body" itemprop="articleBody"><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>苍之彼方的四重奏是一款非常优秀的GalGame，官方在推出两部extra后日谈后就迟迟没有消息，玩家们等不及了，自己做了个同人作品，于是就有了《苍之彼方的四重奏：交予世界的答卷》。由于本作是粉丝自制，所以没有给角色配音。我在想：现在的AI这么厉害，能不能用AI为这部作品补全一个配音呢？说干就干，可没想到，实际工程量比想象的要多得多，很大一部分还是由于我自己的疏忽导致的</p>
 <span id="more"></span>
 
-<p>有这个想法后，我打算用GPTsovits这个项目开始训练</p>
+<p>有这个想法后，我打算用<a target="_blank" rel="noopener" href="https://github.com/RVC-Boss/GPT-SoVITS">GPT-SOVITS</a>这个项目开始训练</p>
 <h2 id="第一步：解包"><a href="#第一步：解包" class="headerlink" title="第一步：解包"></a>第一步：解包</h2><p>练模型肯定得要参考音频，先把游戏解了，把音频拿出来</p>
 <p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/%E8%8B%8D%E4%B9%8B%E5%BD%BC%E6%96%B9%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A5%8F%20%E6%98%8E%E6%97%A5%E9%A6%99fd%20AI%E9%85%8D%E9%9F%B3%E8%A1%A5%E5%85%A8%20%E9%99%84%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/image.png" alt="image"></p>
 <h2 id="第二步：打标-训练"><a href="#第二步：打标-训练" class="headerlink" title="第二步：打标&amp;训练"></a>第二步：打标&amp;训练</h2><p>训练时需要将参考文本和原音频一一对应，简称打标。问题来了：我完全不会日语，怎么办？经过一阵冥思苦想，i have a great idea</p>
 <p>游戏不是有脚本文件嘛，里面不是有原文吗，如果脚本内的原文能和音频文件一一对应不就好了吗，把脚本拿出来一看的确如此，这下可以省一大堆事了</p>
 <p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/%E8%8B%8D%E4%B9%8B%E5%BD%BC%E6%96%B9%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A5%8F%20%E6%98%8E%E6%97%A5%E9%A6%99fd%20AI%E9%85%8D%E9%9F%B3%E8%A1%A5%E5%85%A8%20%E9%99%84%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/image%201.png" alt="image 1"></p>
 <p>打标的产物是一个.list文件，可这么多文本咱也不能一个一个copy and paste吧。codex，来！</p>
-<p>我先让codex阅读GPTsovits的代码，了解.list文件的结构，再让它通过游戏脚本使音频和文本一一对应，各个角色的list文件就生成了，再用这些文件训练各个角色的GPT模型和sovits模型，得到对应的权重文件</p>
+<p>我先让codex阅读GPT-SOVITS的代码，了解.list文件的结构，再让它通过游戏脚本使音频和文本一一对应，各个角色的list文件就生成了，再用这些文件训练各个角色的模型，得到对应的权重文件</p>
 <p>小插曲：有几个角色在训练时爆显存了，我租的是A800 40G。。</p>
 <p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/%E8%8B%8D%E4%B9%8B%E5%BD%BC%E6%96%B9%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A5%8F%20%E6%98%8E%E6%97%A5%E9%A6%99fd%20AI%E9%85%8D%E9%9F%B3%E8%A1%A5%E5%85%A8%20%E9%99%84%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/image%202.png" alt="image 2"></p>
 <p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/%E8%8B%8D%E4%B9%8B%E5%BD%BC%E6%96%B9%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A5%8F%20%E6%98%8E%E6%97%A5%E9%A6%99fd%20AI%E9%85%8D%E9%9F%B3%E8%A1%A5%E5%85%A8%20%E9%99%84%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/baoxiancun.png" alt="baoxiancun"></p>
-<h2 id="第三步：把游戏文本翻译成日语"><a href="#第三步：把游戏文本翻译成日语" class="headerlink" title="第三步：把游戏文本翻译成日语"></a>第三步：把游戏文本翻译成日语</h2><p>同人作品的原文是中文，我需要日语配音，那么得先把游戏文本译成日语，可问题又来了，完全不懂日语的我怎么办？有办法的兄弟，有的，galtransl，请！</p>
+<h2 id="第三步：把游戏文本翻译成日语"><a href="#第三步：把游戏文本翻译成日语" class="headerlink" title="第三步：把游戏文本翻译成日语"></a>第三步：把游戏文本翻译成日语</h2><p>同人作品的原文是中文，我需要日语配音，那么得先把游戏文本译成日语，可问题又来了，完全不懂日语的我怎么办？有办法的兄弟，有的，<a target="_blank" rel="noopener" href="https://github.com/GalTransl/GalTransl">GalTransl</a>，请！</p>
 <p><img data-src="https://github.com/laorentou666/picx-images-hosting/raw/master/%E8%8B%8D%E4%B9%8B%E5%BD%BC%E6%96%B9%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A5%8F%20%E6%98%8E%E6%97%A5%E9%A6%99fd%20AI%E9%85%8D%E9%9F%B3%E8%A1%A5%E5%85%A8%20%E9%99%84%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/image%203.png" alt="image 3"></p>
-<h2 id="最难的一集：生成语音"><a href="#最难的一集：生成语音" class="headerlink" title="最难的一集：生成语音"></a>最难的一集：生成语音</h2><p>模型拿到了，日语文本也有了，现在就可以给同人作品生成语音了，sovits的webui不太适合批量生成，再次请出我们的codex老师，开搓！这里要狠狠批评我自己，项目文件极其混乱，这个留到文末再说</p>
+<h2 id="最难的一集：生成语音"><a href="#最难的一集：生成语音" class="headerlink" title="最难的一集：生成语音"></a>最难的一集：生成语音</h2><p>模型拿到了，日语文本也有了，现在就可以给同人作品生成语音了，sovits的推理webui不太适合批量生成，再次请出我们的codex老师，开搓！这里要狠狠批评我自己，项目文件极其混乱，这个留到文末再说</p>
 <p>经过漫长的等待，终于得到了生成的语音文件，现在将音频文件写入同人游戏的脚本内，启动游戏，就是见证奇迹的时刻！</p>
 <p><video src="https://github.com/laorentou666/picx-images-hosting/raw/refs/heads/master/%E8%8B%8D%E4%B9%8B%E5%BD%BC%E6%96%B9%E7%9A%84%E5%9B%9B%E9%87%8D%E5%A5%8F%20%E6%98%8E%E6%97%A5%E9%A6%99fd%20AI%E9%85%8D%E9%9F%B3%E8%A1%A5%E5%85%A8%20%E9%99%84%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/2026-04-29%2009-14-03_x264.mp4" controls="controls" width="500" height="300"></video></p>
 <p>最后：查验一下是否有吞字漏字的现象，用阿里云的智能语音识别即可，感谢阿里云的免费试用</p>
